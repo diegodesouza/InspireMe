@@ -1,6 +1,8 @@
 <template name="postsList">
   <div class="posts page">
+    <!-- render each posts -->
     {{#each posts}}
+      <!-- get data context -->
       {{> postItem}}
     {{/each}}
   </div>
