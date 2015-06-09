@@ -1,8 +1,19 @@
 Posts = new Mongo.Collection('posts');
 
 Posts.allow({
-  update: function(userId, post) {return ownsDocument(userId, post); },
-  remove: function(userId, post) {return ownsDocument(userId, post); }
+  update: function(userId, post) {
+    return ownsDocument(userId, post);
+  },
+  remove: function(userId, post) {
+    return ownsDocument(userId, post);
+  }
+});
+
+Posts.deny({
+  update: function(userId, post, fieldNames) {
+    // may only edit the following two fields
+    return (_.without(fieldNames, 'title', 'message').length > 0);
+  }
 });
 
 Meteor.methods({
