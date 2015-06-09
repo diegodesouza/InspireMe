@@ -1,5 +1,5 @@
 Template.postPage.helpers({
-  message: function() {
+  data: function() {
     return Posts.findOne({}, {message: 1});
   }
 });
