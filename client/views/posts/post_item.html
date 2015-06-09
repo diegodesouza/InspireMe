@@ -2,9 +2,9 @@
   <div class="post">
     <div class="post-content">
       <h3><a href="{{pathFor 'postPage'}}">{{title}}</a><span>{{username}}</span></h3>
-      <!-- show full message for now (will want to show partially) -->
-      <!-- <p class="message">{{message}}</p> -->
+      <!-- show full message for now (will want to show it partially) -->
+      <div class="message">{{message}}</div>
     </div>
-    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
+    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Comment</a>
   </div>
 </template>

@@ -11,7 +11,7 @@ Meteor.methods({
     var user = Meteor.user();
     var post = _.extend(postAttributes, {
       userId: user._id,
-      author: user.username,
+      username: user.username,
       submitted: new Date()
     });
 
