@@ -12,6 +12,10 @@ Template.postSubmit.events({
       if (error)
         return throwError(error.reason);
 
+      // this is what i get with console.log()
+      // console.log(result);(Object {_id: "8niQx9Nuys6Fqk6F8"})
+      // console.log(result._id);(8niQx9Nuys6Fqk6F8)
+
       Router.go('postPage', {_id: result._id});
     });
   }

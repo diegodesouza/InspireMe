@@ -10,11 +10,23 @@ Posts.allow({
 });
 
 Posts.deny({
-  update: function(userId, post, fieldNames) {
-    // may only edit the following two fields
-    return (_.without(fieldNames, 'title', 'message').length > 0);
+  update: function(userId, post, fieldNames, modifier) {
+    var errors = validatePost(modifier.$set);
+    return errors.title || errors.message;
   }
 });
+
+validatePost = function(post) {
+  var errors = {};
+
+  if(!post.title)
+    errors.title = "Please fill in a title";
+
+  if(!post.message)
+    errors.message = "Please fill in a message";
+
+  return errors;
+};
 
 Meteor.methods({
   postInsert: function(postAttributes) {
@@ -22,7 +34,7 @@ Meteor.methods({
     check(postAttributes, {
       title: String,
       message: String
-    });
+  });
 
     var user = Meteor.user();
     var post = _.extend(postAttributes, {
