@@ -1,37 +1,64 @@
-// if (Posts.find().count() === 0) {
-  // Posts.insert({
-    // title: "Something to be remembered",
-    // username: "John",
-    // message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  // });
+if (Posts.find().count() === 0) {
+  var now = new Date().getTime();
 
-  // Posts.insert({
-    // title: "Struggles",
-    // username: "Mark",
-    // message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  // });
+  // create two users
 
-  // Posts.insert({
-    // title: "Overcame it",
-    // username: "Luke",
-    // message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  // });
+  var diegoId = Meteor.users.insert({
+    profile: {name: "Diego De Souza"}
+  });
+  var diego = Meteor.users.findOne(diegoId);
 
-  // Posts.insert({
-    // title: 'Turn around',
-    // username: 'John',
-    // message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  // });
+  var jackId = Meteor.users.insert({
+    profile: {name: "Jack lumber"}
+  });
+  var jack = Meteor.users.findOne(jackId);
 
-  // Posts.insert({
-    // title: 'Wandering until',
-    // username: 'Mark',
-    // message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  // });
+  var inspirational = Posts.insert({
+    title: 'Inspirational',
+    userId: diego._id,
+    username: diego.profile.name,
+    message: "This is a cool message i typed",
+    submitted: now - 7 * 3600 * 1000
+  });
 
-  // Posts.insert({
-    // title: 'Found it',
-    // username: 'Luke',
-    // message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
-  // });
-// }
+  Posts.insert({
+    title: "Something to be remembered",
+    userId: diego._id,
+    username: diego.profile.name,
+    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    submitted: now - 7 * 3600 * 1000
+  });
+
+  Posts.insert({
+    title: "Something to be forgotten",
+    userId: diego._id,
+    username: diego.profile.name,
+    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    submitted: now - 7 * 3600 * 1000
+  });
+
+  Posts.insert({
+    title: "Something to be remembered",
+    userId: jack._id,
+    username: jack.profile.name,
+    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+    submitted: now - 7 * 3600 * 1000
+  });
+
+  Comments.insert({
+    postId: inspirational,
+    userId: diego._id,
+    author: diego.profile.name,
+    submitted: now - 5 * 3600 * 1000,
+    body: 'This is an interesting post, thanks for sharing'
+  });
+
+
+  Comments.insert({
+    postId: inspirational,
+    userId: jack._id,
+    author: jack.profile.name,
+    submitted: now - 5 * 3600 * 1000,
+    body: 'This is an important point, thanks for sharing'
+  });
+}
