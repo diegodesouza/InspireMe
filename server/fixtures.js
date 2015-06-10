@@ -9,7 +9,7 @@ if (Posts.find().count() === 0) {
   var diego = Meteor.users.findOne(diegoId);
 
   var jackId = Meteor.users.insert({
-    profile: {name: "Jack lumber"}
+    profile: {name: "Jack Lumber"}
   });
   var jack = Meteor.users.findOne(jackId);
 
@@ -48,7 +48,7 @@ if (Posts.find().count() === 0) {
   Comments.insert({
     postId: inspirational,
     userId: diego._id,
-    author: diego.profile.name,
+    username: diego.profile.name,
     submitted: now - 5 * 3600 * 1000,
     body: 'This is an interesting post, thanks for sharing'
   });
@@ -57,7 +57,7 @@ if (Posts.find().count() === 0) {
   Comments.insert({
     postId: inspirational,
     userId: jack._id,
-    author: jack.profile.name,
+    username: jack.profile.name,
     submitted: now - 5 * 3600 * 1000,
     body: 'This is an important point, thanks for sharing'
   });

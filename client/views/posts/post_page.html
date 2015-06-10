@@ -4,4 +4,10 @@
     <h3>{{title}}</h3><span>Submitted by {{username}}</span>
     <p class="message">{{message}}</p>
   </div>
+
+  <ul class="comments">
+    {{#each comments}}
+      {{> comment}}
+    {{/each}}
+  </ul>
 </template>

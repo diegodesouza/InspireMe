@@ -1,6 +1,6 @@
 Template.postPage.helpers({
-  data: function() {
-    return Posts.findOne({}, {message: 1});
+  comments: function() {
+    return Comments.find({postId: this._id});
   }
 });
 
