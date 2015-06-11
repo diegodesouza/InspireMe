@@ -7,7 +7,7 @@
       <!-- show full message for now (will want to show it partially) -->
       <div class="message">{{message}}</div>
       <p>
-        {{votes}} Votes
+        {{pluralize votes "Vote"}}
       </p>
       <a href="{{pathFor 'postPage'}}">{{commentsCount}} comments</a>
       {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
