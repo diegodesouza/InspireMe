@@ -1,12 +1,13 @@
 <template name="postsList">
   <div class="posts page">
-    <!-- iterate over each posts -->
-    {{#each posts}}
-      <!-- render what's defined in postItem template -->
-      <!-- get data context -->
-      {{> postItem}}
-    {{/each}}
-
+    <div class="wrapper">
+      <!-- iterate over each posts -->
+      {{#each posts}}
+        <!-- render what's defined in postItem template -->
+        <!-- get data context -->
+        {{> postItem}}
+      {{/each}}
+    </div>
     {{#if nextPath}}
       <a class="load-more" href="{{nextPath}}">Load more</a>
       {{else}}
