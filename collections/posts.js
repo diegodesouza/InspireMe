@@ -1,4 +1,10 @@
 Posts = new Mongo.Collection('posts');
+Posts.friendlySlugs({
+  slugFrom: 'title',
+  slugField: 'slug',
+  distinct: true,
+  updateSlug: true
+});
 
 Posts.allow({
   update: function(userId, post) {
