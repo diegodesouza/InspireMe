@@ -12,3 +12,6 @@ twbs:bootstrap
 audit-argument-checks
 iron:router
 todda00:friendly-slugs
+aldeed:simple-schema
+aldeed:autoform
+aldeed:collection2
